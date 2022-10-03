@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+<constant name="struts.custom.i18n.resources" value="ApplicationResources"></constant>
+<constant name="struts.multipart.maxSize" value="53477376" />
+
+<package name="default" extends="struts-default" namespace="/">
+<action name="filedownload" class="com.controler.DownloadAction">
+        <result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename=${fileName}</param>
+                <param name="contentType">application/pdf</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="bufferSize">1024</param>
+        </result>
+        </action>
+<action name="register">
+<result>register.jsp</result>
+</action>
+<action name="userlogin">
+<result>login.jsp</result>
+</action>
+<action name="java">
+<result>java.jsp</result>
+</action>
+<action name="dotnet">
+<result>dotnet.jsp</result>
+</action>
+
+<action name="php">
+<result>php.jsp</result>
+</action>
+
+<action name="python">
+<result>python.jsp</result>
+</action>
+
+
+
+<action name="others">
+<result>others.jsp</result>
+</action>
+<action name="adminlogin">
+<result>Adminlogin.jsp</result>
+</action>
+<action name="Login" class="com.controler.LoginAction" method="execute">
+<result name="success">others.jsp</result>
+<result name="error">login.jsp</result>
+<result name="input">login.jsp</result>
+</action>
+<action name="Adminlogin" class="com.controler.AdminAction" method="execute">
+<result name="success">upload.jsp</result>
+<result name="error">Adminlogin.jsp</result>
+<result name="input">Adminlogin.jsp</result>
+</action>
+<action name="Register" class="com.controler.RegisterAction" method="execute">
+<result name="success">login.jsp</result>
+<result name="error">register.jsp</result>
+<result name="input">register.jsp</result>
+</action>
+<action name="fileupload" class="com.controler.UploadAction">
+<interceptor-ref name="fileUpload">
+<param name="allowedExtentions">.pdf</param>
+</interceptor-ref>
+<interceptor-ref name="defaultStack"></interceptor-ref>
+<result name="success">success.jsp</result>
+<result name="input">upload.jsp</result>
+</action>
+</package>
+</struts>
