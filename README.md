@@ -1,2 +1,2 @@
 # ADM
-Automatic Domain Module
+Automatic Generation of  Domain Module
