@@ -1,0 +1,2 @@
+# ADM
+Automatic Domain Module
